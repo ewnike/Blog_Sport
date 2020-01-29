@@ -8,7 +8,7 @@ import os
 
 
 API_BASE = "https://jsonodds.com/api/"
-API_KEY = "85cc9464-3b0a-4d1a-9e5b-4263c6700b19"
+API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 
 
@@ -28,10 +28,9 @@ def get_data(url):
 
 def post_data(url, payload):
     response = requests.post(url, headers=DEFAULT_HEADER, data = payload)
-    print(response.content)
-    
     try:
         print(response.json())
+        #print("hello")
     except (json.decoder.JSONDecodeError, ValueError):
         print("N'est pas JSON")
 
@@ -59,8 +58,6 @@ def get_results_oddtype(oddtype):
 def print_sport(sport):
     for schedule in get_schedule(sport):
         schedule_nhl = ScheduleNHL()
-        #print("*"*25)
-
         schedule_nhl.api_id_key = schedule['ID']
         schedule_nhl.away_rot = int(schedule['AwayROT'])
         schedule_nhl.away_team = schedule['AwayTeam']
@@ -72,6 +69,7 @@ def print_sport(sport):
             print('type odds for event_id ')
             print(odds['ID'])
             odds_list = post_odds(odds['EventID'], sport, odds['OddType'])
+            print('this oddslist is a dictionary')
             print(type(odds_list))
             for item in odds_list:
                 for event_odd in item['Odds']:
