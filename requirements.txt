@@ -90,7 +90,7 @@ tables==3.4.4
 tpqoa==0.0.46
 traitlets==4.3.2
 uber-rides==0.6.0
-ujson==1.35
+ujson==5.2.0
 uritemplate==3.0.0
 urllib3==1.23
 v20==3.0.25.0
